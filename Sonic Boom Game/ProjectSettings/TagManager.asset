@@ -8,6 +8,7 @@ TagManager:
   - Shot2
   - Shot3
   - Enemy
+  - Hand
   layers:
   - Default
   - TransparentFX
