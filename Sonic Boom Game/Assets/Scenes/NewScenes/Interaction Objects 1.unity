@@ -1248,13 +1248,13 @@ TextMesh:
     smacked,
     picked up, and thrown by interaction controllers.
 
-    
 
-    Hands tracked
-    by Leap Motion and standard VR controllers are
 
-    supported equally well by
-    the Interaction Engine.'
+    Hands tracked by Leap
+    Motion and standard VR controllers are
+
+    supported equally well by the Interaction
+    Engine.'
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
@@ -2496,6 +2496,9 @@ MonoBehaviour:
   blueBullet: {fileID: 8227610148578401581, guid: cb4bfbd0155305b499bed5fd74537791,
     type: 3}
   firingCooldown: 0.5
+  hand:
+  - {fileID: 2018482828}
+  - {fileID: 1802745384}
 --- !u!4 &262787360
 Transform:
   m_ObjectHideFlags: 0
@@ -3100,8 +3103,8 @@ TextMesh:
     floating objects below ignore
     contact and grasping: they
 
-    only receive hover information, even though
-    other objects
+    only receive hover information, even though other
+    objects
 
     can still collide with them.'
   m_OffsetZ: 0

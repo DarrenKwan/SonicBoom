@@ -16,7 +16,7 @@ namespace Leap.Unity.Interaction
         bool canFire_L, canFire_R;
         [SerializeField] float firingCooldown = 1.5f;
 
-        RiggedHand[] hand = new RiggedHand[2];
+        [SerializeField] RiggedHand[] hand = new RiggedHand[2];
         
 
         private void Awake()
