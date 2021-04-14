@@ -8,11 +8,11 @@ public class BPeerM : MonoBehaviour
 
     public float bpm;
 
-    private float beatInterval, beatTimer, beatIntervalD8, beatTimerD8;
+    private float beatInterval, beatTimer, beatIntervalD2, beatTimerD2, beatIntervalHalf, beatTimerHalf;
 
-    public static bool beatFull, beatD8;
+    public static bool beatFull, beatD2, beatHalf;
 
-    public static int beatCountFull, beatCountD8;
+    public static int beatCountFull, beatCountD2, beatCountHalf;
 
     private void Awake()
     {
@@ -53,20 +53,31 @@ public class BPeerM : MonoBehaviour
             beatFull = true;
             beatCountFull++;
 
-            Debug.Log("Full");
+            //Debug.Log("Full");
         }
 
         //divided beat count
-        beatD8 = false;
-        beatIntervalD8 = beatInterval / 8;
-        beatTimerD8 += Time.deltaTime;
-        if(beatTimerD8 >= beatIntervalD8)
+        beatD2 = false;
+        beatIntervalD2 = beatInterval / 2;
+        beatTimerD2 += Time.deltaTime;
+        if(beatTimerD2 >= beatIntervalD2)
         {
-            beatTimerD8 -= beatIntervalD8;
-            beatD8 = true;
-            beatCountD8++;
+            beatTimerD2 -= beatIntervalD2;
+            beatD2 = true;
+            beatCountD2++;
 
-            Debug.Log("D8");
+            //Debug.Log("D8");
+        }
+
+        //multiplied beat count
+        beatHalf = false;
+        beatIntervalHalf = beatInterval / 0.5f;
+        beatTimerHalf += Time.deltaTime;
+        if(beatTimer>= beatIntervalHalf)
+        {
+            beatTimer -= beatIntervalHalf;
+            beatHalf = true;
+            beatCountHalf++;
         }
     }
 

@@ -4767,6 +4767,7 @@ GameObject:
   - component: {fileID: 4857129586081078543}
   - component: {fileID: 4857129586081078542}
   - component: {fileID: -4999837744650054980}
+  - component: {fileID: 7016302498861752636}
   m_Layer: 0
   m_Name: Shot6
   m_TagString: Shot3
@@ -4865,3 +4866,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7016302498861752636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4857129586081078529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3e07c5c786e846a7589177623e584, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBefore_SelfDescruct: 5

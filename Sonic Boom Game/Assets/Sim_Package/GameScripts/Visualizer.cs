@@ -18,7 +18,7 @@ public class Visualizer : MonoBehaviour
 
     void Start()
     {
-        bgm = GameObject.Find("GM").GetComponent<AudioSource>();
+        bgm = GameObject.Find("GameManager").GetComponent<AudioSource>();
         visualizerObjects = GetComponentsInChildren<VisualizerObject>();
     }
 
@@ -31,7 +31,7 @@ public class Visualizer : MonoBehaviour
         for (int i = 0; i < visualizerObjects.Length; i++)
         {
             Vector2 newSize = visualizerObjects[i].GetComponent<RectTransform>().rect.size;
-            newSize.y = Mathf.Lerp(newSize.y, minHeight + (spectrumData[i] * (maxHeight - minHeight) * 6), 0.5f);
+            newSize.y = Mathf.Lerp(newSize.y, minHeight + (spectrumData[i] * (maxHeight - minHeight) * 90), 0.5f);
 
             visualizerObjects[i].GetComponent<RectTransform>().sizeDelta = newSize;
         }
