@@ -6,12 +6,16 @@ namespace Leap.Unity.Interaction
 {
     public class GameManager : MonoBehaviour
     {
-        public enum Song_or_GameMode
+        #region don't worry about this stuff
+        [HideInInspector] public enum Song_or_GameMode
         {
             STATIC,
             PLAY_YOUROWN_SOUNDS_CRIMEWAVE
         }
         public Song_or_GameMode curMode;
+        #endregion
+
+        PlayersChampion player;
 
         public AudioSource[] audiosource;
         
@@ -32,7 +36,6 @@ namespace Leap.Unity.Interaction
         private void Awake()
         {
             GetStartingComponents_LeapMotion();
-
         }
 
         void Start()
@@ -41,7 +44,10 @@ namespace Leap.Unity.Interaction
             canFire_R = true;
             canFire_C = true;
 
-            StartTheGame();
+            //our reference to our player
+            player = GameObject.Find("PlayersChampion").GetComponent<PlayersChampion>();
+
+            //StartTheGame();
         }
 
         private void Update()
@@ -67,6 +73,41 @@ namespace Leap.Unity.Interaction
                     break;
             }
         }
+
+        #region Combat/Buffing Stuff
+
+        //need references to player & stats
+
+        public void EncourageAttack()
+        {
+            //play attack drum
+
+            //increase attack chance
+
+            Debug.Log("Encourage attack ++");
+            player.EncourageAttack();
+        }
+
+        public void EncourageDefend()
+        {
+            //play def drum
+
+            //increase def chance
+
+            Debug.Log("Encourage def ++");
+            player.EncourageDefend();
+        }
+
+        public void EncourageMorale()
+        {
+            //play morale drum
+
+            //increase morale recharge rate
+
+            Debug.Log("Encourage morale ++");
+            player.EncourageMorale();
+        }
+        #endregion
 
         #region Firing/LeapMotionStuff
 
