@@ -12,7 +12,8 @@ public class PlayersChampion : MonoBehaviour
     //image to convey when your player will do something
     [SerializeField] Image moraleImage;
 
-    //stats
+    //player stats
+    BaseStats myBaseStats;
     [SerializeField] float AttackChance, DefenseChance, ChokeChance;
     List<Tuple<float, Action>> possibleChance = new List<Tuple<float, Action>>();
         //dafuq a tuple --> allows u to take two obj and make it 1 obj in a list
@@ -28,9 +29,14 @@ public class PlayersChampion : MonoBehaviour
     //choosing actions
     float TotalChance = 100f;
 
+    //reference to enemy - how we affect the enemy
+    [SerializeField] GameObject BigusOrcus_TheFoul;
 
     void Start()
     {
+        myBaseStats = GetComponent<BaseStats>();
+
+
         //our percentage chances
         AttackChance = 33;
         DefenseChance = 33;
@@ -67,7 +73,10 @@ public class PlayersChampion : MonoBehaviour
 
     void ChooseAction()
     {
-        Debug.Log("player takes an action now");
+            //Debug.Log("player takes an action now");
+
+        //get the highest chance for a thing
+        //here
 
         float chance = UnityEngine.Random.Range(0f, 100f);
         //specifying unityengine here cus we're also using system --> for the Tuples
@@ -105,6 +114,14 @@ public class PlayersChampion : MonoBehaviour
         {
             AttackParticles.Play();
         }
+        if (MoraleParticles.isPlaying)
+        {
+            MoraleParticles.Stop();
+        }
+        if (DefenseParticles.isPlaying)
+        {
+            DefenseParticles.Stop();
+        }
     }
 
     public void EncourageDefend()
@@ -118,10 +135,20 @@ public class PlayersChampion : MonoBehaviour
         {
             DefenseParticles.Play();
         }
+        if (MoraleParticles.isPlaying)
+        {
+            MoraleParticles.Stop();
+        }
+        if (AttackParticles.isPlaying)
+        {
+            AttackParticles.Stop();
+        }
     }
 
     public void EncourageMorale()
     {
+        curMorale += 0.1f;
+
         ChokeChance += encouragementRate;
 
         AttackChance -= encouragementRate / 2;
@@ -131,6 +158,14 @@ public class PlayersChampion : MonoBehaviour
         {
             MoraleParticles.Play();
         }
+        if (AttackParticles.isPlaying)
+        {
+            AttackParticles.Stop();
+        }
+        if (DefenseParticles.isPlaying)
+        {
+            DefenseParticles.Stop();
+        }
     }
     #endregion
 
@@ -138,16 +173,38 @@ public class PlayersChampion : MonoBehaviour
     void PlayerAttack()
     {
         Debug.Log("the player launches an attack");
+
+        //need a reference to enemy & their HP bar
+        BigusOrcus_TheFoul.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
+
+        //take away enemy HP
+
+        ResetChances();
     }
 
     void PlayerDefend()
     {
         Debug.Log("the player defends");
+
+        //play a defend animation
+
+        ResetChances();
     }
 
     void PlayerChoke()
     {
         Debug.Log("the player chokes - what a bich");
+
+        //do nothing
+
+        ResetChances();
+    }
+
+    void ResetChances()
+    {
+        AttackChance = 34f;
+        DefenseChance = 34f;
+        ChokeChance = 34f;
     }
 
     #endregion
