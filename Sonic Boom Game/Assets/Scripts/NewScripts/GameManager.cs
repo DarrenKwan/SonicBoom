@@ -35,6 +35,9 @@ namespace Leap.Unity.Interaction
 
         [SerializeField] ParticleSystem greenShockwave, blueShockwave, redShockwave;
 
+        [SerializeField] GameObject tutorialWindow;
+        bool tutorialActive = true;
+
         private void Awake()
         {
             GetStartingComponents_LeapMotion();
@@ -228,6 +231,20 @@ namespace Leap.Unity.Interaction
                         break;
                 }
 
+            }
+        }
+
+        public void ToggleTutorial()
+        {
+            if (tutorialActive)
+            {
+                tutorialWindow.SetActive(false);
+                tutorialActive = false;
+            }
+            else
+            {
+                tutorialWindow.SetActive(true);
+                tutorialActive = true;
             }
         }
 
@@ -516,6 +533,5 @@ namespace Leap.Unity.Interaction
         }
 
         #endregion
-
     }
 }

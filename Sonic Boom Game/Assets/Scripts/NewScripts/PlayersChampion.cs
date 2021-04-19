@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayersChampion : MonoBehaviour
 {
@@ -36,6 +37,8 @@ public class PlayersChampion : MonoBehaviour
     [SerializeField] AudioClip attackSound, defendSound, chokeSound;
 
     Animator animator;
+
+    [SerializeField] TextMeshProUGUI att_chance_text, def_chance_text, choke_chance_text;
 
     void Start()
     {
@@ -74,6 +77,11 @@ public class PlayersChampion : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        Update_ChanceText();
+    }
+
     void ChooseAction()
     {
         //reset our defense stance
@@ -96,7 +104,8 @@ public class PlayersChampion : MonoBehaviour
             if (sumChance >= chance)
             {
                 possibleChance[i].Item2();
-                    //wat we doing here is calling our function
+                //wat we doing here is calling our function
+
                 break;
             }
         }
@@ -113,19 +122,23 @@ public class PlayersChampion : MonoBehaviour
         ChokeChance -= encouragementRate / 2;
         DefenseChance -= encouragementRate / 2;
 
-            ////play particles
-            //if (!AttackParticles.isPlaying)
-            //{
-            //    AttackParticles.Play();
-            //}
-            //if (MoraleParticles.isPlaying)
-            //{
-            //    MoraleParticles.Stop();
-            //}
-            //if (DefenseParticles.isPlaying)
-            //{
-            //    DefenseParticles.Stop();
-            //}
+        //since we've updated our chances for things, let's update the text that tells the player that
+        ResetOurTuples();
+        Update_ChanceText();
+
+        ////play particles
+        //if (!AttackParticles.isPlaying)
+        //{
+        //    AttackParticles.Play();
+        //}
+        //if (MoraleParticles.isPlaying)
+        //{
+        //    MoraleParticles.Stop();
+        //}
+        //if (DefenseParticles.isPlaying)
+        //{
+        //    DefenseParticles.Stop();
+        //}
     }
 
     public void EncourageDefend()
@@ -134,6 +147,10 @@ public class PlayersChampion : MonoBehaviour
 
         ChokeChance -= encouragementRate / 2;
         AttackChance -= encouragementRate / 2;
+
+        //since we've updated our chances for things, let's update the text that tells the player that
+        ResetOurTuples();
+        Update_ChanceText();
 
             //if (!DefenseParticles.isPlaying)
             //{
@@ -158,18 +175,22 @@ public class PlayersChampion : MonoBehaviour
         AttackChance -= encouragementRate / 2;
         DefenseChance -= encouragementRate / 2;
 
-            //if (!MoraleParticles.isPlaying)
-            //{
-            //    MoraleParticles.Play();
-            //}
-            //if (AttackParticles.isPlaying)
-            //{
-            //    AttackParticles.Stop();
-            //}
-            //if (DefenseParticles.isPlaying)
-            //{
-            //    DefenseParticles.Stop();
-            //}
+        //since we've updated our chances for things, let's update the text that tells the player that
+        ResetOurTuples();
+        Update_ChanceText();
+
+        //if (!MoraleParticles.isPlaying)
+        //{
+        //    MoraleParticles.Play();
+        //}
+        //if (AttackParticles.isPlaying)
+        //{
+        //    AttackParticles.Stop();
+        //}
+        //if (DefenseParticles.isPlaying)
+        //{
+        //    DefenseParticles.Stop();
+        //}
     }
     #endregion
 
@@ -187,6 +208,8 @@ public class PlayersChampion : MonoBehaviour
         theAudioSource.PlayOneShot(attackSound);
 
         ResetChances();
+        ResetOurTuples();
+        Update_ChanceText();
 
         animator.SetTrigger("Attack");
     }
@@ -203,6 +226,8 @@ public class PlayersChampion : MonoBehaviour
         //play a defend animation
 
         ResetChances();
+        ResetOurTuples();
+        Update_ChanceText();
 
         animator.SetTrigger("Block");
     }
@@ -217,6 +242,8 @@ public class PlayersChampion : MonoBehaviour
         //do nothing
 
         ResetChances();
+        ResetOurTuples();
+        Update_ChanceText();
 
         animator.SetTrigger("Crying");
     }
@@ -241,4 +268,11 @@ public class PlayersChampion : MonoBehaviour
     }
 
     #endregion
+
+    void Update_ChanceText()
+    {
+        att_chance_text.text = possibleChance[0].Item1.ToString();
+        def_chance_text.text = possibleChance[1].Item1.ToString();
+        choke_chance_text.text = possibleChance[2].Item1.ToString();
+    }
 }
