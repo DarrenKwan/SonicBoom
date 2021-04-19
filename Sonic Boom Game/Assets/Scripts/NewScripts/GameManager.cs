@@ -33,6 +33,8 @@ namespace Leap.Unity.Interaction
         [SerializeField] RiggedHand[] hand = new RiggedHand[2];
         Animator reticle_L, reticle_R, reticle_Center;
 
+        [SerializeField] ParticleSystem greenShockwave, blueShockwave, redShockwave;
+
         private void Awake()
         {
             GetStartingComponents_LeapMotion();
@@ -81,6 +83,7 @@ namespace Leap.Unity.Interaction
         public void EncourageAttack()
         {
             //play attack drum
+            redShockwave.Play();
 
             //increase attack chance
 
@@ -94,6 +97,7 @@ namespace Leap.Unity.Interaction
         public void EncourageDefend()
         {
             //play def drum
+            blueShockwave.Play();
 
             //increase def chance
 
@@ -107,6 +111,7 @@ namespace Leap.Unity.Interaction
         public void EncourageMorale()
         {
             //play morale drum
+            greenShockwave.Play();
 
             //increase morale recharge rate
 
