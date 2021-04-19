@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     AudioSource theAudioSource;
     [SerializeField] AudioClip attackSound, defendSound, chokeSound;
 
+    Animator animator;
+
     void Start()
     {
         myBaseStats = GetComponent<BaseStats>();
@@ -44,6 +46,8 @@ public class Enemy : MonoBehaviour
 
         //filling meter
         moraleImage.fillAmount = curMorale / maxMorale;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
 
@@ -99,6 +103,9 @@ public class Enemy : MonoBehaviour
         theAudioSource.PlayOneShot(attackSound);
 
         player.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
+        player.GetComponentInChildren<Animator>().SetTrigger("Damage");
+
+        animator.SetTrigger("Attack");
     }
 
     void EnemyDefend()
@@ -107,6 +114,8 @@ public class Enemy : MonoBehaviour
 
         //play sound
         theAudioSource.PlayOneShot(defendSound);
+
+        animator.SetTrigger("Block");
     }
 
     void EnemyChoke()
@@ -115,5 +124,7 @@ public class Enemy : MonoBehaviour
 
         //play sound
         theAudioSource.PlayOneShot(chokeSound);
+
+        animator.SetTrigger("Crying");
     }
 }

@@ -35,6 +35,8 @@ public class PlayersChampion : MonoBehaviour
     AudioSource theAudioSource;
     [SerializeField] AudioClip attackSound, defendSound, chokeSound;
 
+    Animator animator;
+
     void Start()
     {
         myBaseStats = GetComponent<BaseStats>();
@@ -50,6 +52,8 @@ public class PlayersChampion : MonoBehaviour
 
         //filling meter
         moraleImage.fillAmount = curMorale / maxMorale;
+
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Update()
@@ -176,13 +180,15 @@ public class PlayersChampion : MonoBehaviour
 
         //need a reference to enemy & their HP bar
         BigusOrcus_TheFoul.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
-
+        BigusOrcus_TheFoul.GetComponentInChildren<Animator>().SetTrigger("Damage");
         //play animation
 
         //play sound
         theAudioSource.PlayOneShot(attackSound);
 
         ResetChances();
+
+        animator.SetTrigger("Attack");
     }
 
     void PlayerDefend()
@@ -197,6 +203,8 @@ public class PlayersChampion : MonoBehaviour
         //play a defend animation
 
         ResetChances();
+
+        animator.SetTrigger("Block");
     }
 
     void PlayerChoke()
@@ -209,6 +217,8 @@ public class PlayersChampion : MonoBehaviour
         //do nothing
 
         ResetChances();
+
+        animator.SetTrigger("Crying");
     }
 
     void ResetChances()
