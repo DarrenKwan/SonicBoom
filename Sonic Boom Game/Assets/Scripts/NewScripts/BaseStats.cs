@@ -17,8 +17,13 @@ public class BaseStats : MonoBehaviour
 
     public bool defending = false;
 
+    AudioSource theAudioSource;
+    [SerializeField] AudioClip hurtSound, tauntSound;
+
     private void Start()
     {
+        theAudioSource = GetComponent<AudioSource>();
+
         curHP = maxHP;
 
         healthBarImage.fillAmount = curHP / maxHP;
@@ -35,6 +40,9 @@ public class BaseStats : MonoBehaviour
         if (!defending)
         {
             curHP -= damage;
+
+            //playsound
+            theAudioSource.PlayOneShot(hurtSound);
         }
 
 
@@ -50,7 +58,8 @@ public class BaseStats : MonoBehaviour
 
                 //play block sound
 
-
+                //playsound
+                theAudioSource.PlayOneShot(hurtSound);
             }
             else
             {
@@ -60,7 +69,10 @@ public class BaseStats : MonoBehaviour
                 defending = false;
 
                 //play block sound
+                theAudioSource.PlayOneShot(hurtSound);
+
                 //play taunt sound
+                theAudioSource.PlayOneShot(tauntSound);
             }
         }
 
