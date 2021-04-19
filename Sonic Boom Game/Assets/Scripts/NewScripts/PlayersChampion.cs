@@ -95,7 +95,6 @@ public class PlayersChampion : MonoBehaviour
                 break;
             }
         }
-        
     }
 
     #region encouraging actions
@@ -177,7 +176,8 @@ public class PlayersChampion : MonoBehaviour
         //need a reference to enemy & their HP bar
         BigusOrcus_TheFoul.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
 
-        //take away enemy HP
+        //play animation
+
 
         ResetChances();
     }

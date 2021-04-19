@@ -86,6 +86,9 @@ namespace Leap.Unity.Interaction
 
             Debug.Log("Encourage attack ++");
             player.EncourageAttack();
+
+            //spawn a particle flying towards ur orc
+            CheckIfFired_R();
         }
 
         public void EncourageDefend()
@@ -96,6 +99,9 @@ namespace Leap.Unity.Interaction
 
             Debug.Log("Encourage def ++");
             player.EncourageDefend();
+
+            //spawn a particle flying towards ur orc
+            CheckIfFired_L();
         }
 
         public void EncourageMorale()
@@ -106,6 +112,9 @@ namespace Leap.Unity.Interaction
 
             Debug.Log("Encourage morale ++");
             player.EncourageMorale();
+
+            //spawn a particle flying towards ur orc
+            CheckIfFired_C();
         }
         #endregion
 
@@ -224,7 +233,7 @@ namespace Leap.Unity.Interaction
             GameObject bul_R = Instantiate(redBullet, firePos_R.position, Quaternion.identity);
 
             //Instantiate(bul_R);
-            bul_R.GetComponent<Rigidbody>().AddForce(0, 0, 10f, ForceMode.Impulse);
+            //bul_R.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
             Debug.Log("Fire from your right hand.");
             yield return new WaitForSeconds(firingCooldown);
@@ -238,7 +247,7 @@ namespace Leap.Unity.Interaction
             GameObject bul_L = Instantiate(blueBullet, firePos_L.position, Quaternion.identity);
 
             //Instantiate(bul_L);
-            bul_L.GetComponent<Rigidbody>().AddForce(0, 0, 10f, ForceMode.Impulse);
+            //bul_L.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
             Debug.Log("Fire from your left hand.");
             yield return new WaitForSeconds(firingCooldown);
@@ -253,7 +262,7 @@ namespace Leap.Unity.Interaction
                 GameObject bul_C = Instantiate(greenBullet, firePos_C.position, Quaternion.identity);
 
                 //Instantiate(bul_L);
-                bul_C.GetComponent<Rigidbody>().AddForce(0, 0, 10f, ForceMode.Impulse);
+                //bul_C.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
                 Debug.Log("Fire top center pos.");
                 yield return new WaitForSeconds(firingCooldown);
