@@ -102,19 +102,19 @@ public class PlayersChampion : MonoBehaviour
         ChokeChance -= encouragementRate / 2;
         DefenseChance -= encouragementRate / 2;
 
-        //play particles
-        if (!AttackParticles.isPlaying)
-        {
-            AttackParticles.Play();
-        }
-        if (MoraleParticles.isPlaying)
-        {
-            MoraleParticles.Stop();
-        }
-        if (DefenseParticles.isPlaying)
-        {
-            DefenseParticles.Stop();
-        }
+            ////play particles
+            //if (!AttackParticles.isPlaying)
+            //{
+            //    AttackParticles.Play();
+            //}
+            //if (MoraleParticles.isPlaying)
+            //{
+            //    MoraleParticles.Stop();
+            //}
+            //if (DefenseParticles.isPlaying)
+            //{
+            //    DefenseParticles.Stop();
+            //}
     }
 
     public void EncourageDefend()
@@ -124,18 +124,18 @@ public class PlayersChampion : MonoBehaviour
         ChokeChance -= encouragementRate / 2;
         AttackChance -= encouragementRate / 2;
 
-        if (!DefenseParticles.isPlaying)
-        {
-            DefenseParticles.Play();
-        }
-        if (MoraleParticles.isPlaying)
-        {
-            MoraleParticles.Stop();
-        }
-        if (AttackParticles.isPlaying)
-        {
-            AttackParticles.Stop();
-        }
+            //if (!DefenseParticles.isPlaying)
+            //{
+            //    DefenseParticles.Play();
+            //}
+            //if (MoraleParticles.isPlaying)
+            //{
+            //    MoraleParticles.Stop();
+            //}
+            //if (AttackParticles.isPlaying)
+            //{
+            //    AttackParticles.Stop();
+            //}
     }
 
     public void EncourageMorale()
@@ -147,18 +147,18 @@ public class PlayersChampion : MonoBehaviour
         AttackChance -= encouragementRate / 2;
         DefenseChance -= encouragementRate / 2;
 
-        if (!MoraleParticles.isPlaying)
-        {
-            MoraleParticles.Play();
-        }
-        if (AttackParticles.isPlaying)
-        {
-            AttackParticles.Stop();
-        }
-        if (DefenseParticles.isPlaying)
-        {
-            DefenseParticles.Stop();
-        }
+            //if (!MoraleParticles.isPlaying)
+            //{
+            //    MoraleParticles.Play();
+            //}
+            //if (AttackParticles.isPlaying)
+            //{
+            //    AttackParticles.Stop();
+            //}
+            //if (DefenseParticles.isPlaying)
+            //{
+            //    DefenseParticles.Stop();
+            //}
     }
     #endregion
 

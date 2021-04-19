@@ -9,6 +9,13 @@ TagManager:
   - Shot3
   - Enemy
   - Hand
+  - cubeTarget
+  - cube
+  - cubeHit
+  - drumShot
+  - DefenseShot
+  - AttackShot
+  - MoraleShot
   layers:
   - Default
   - TransparentFX

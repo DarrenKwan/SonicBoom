@@ -4771,7 +4771,7 @@ GameObject:
   - component: {fileID: 4452829464531877679}
   m_Layer: 0
   m_Name: Shot6
-  m_TagString: Shot3
+  m_TagString: AttackShot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
