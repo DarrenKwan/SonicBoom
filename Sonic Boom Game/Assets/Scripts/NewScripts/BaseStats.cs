@@ -20,8 +20,12 @@ public class BaseStats : MonoBehaviour
     AudioSource theAudioSource;
     [SerializeField] AudioClip hurtSound, tauntSound;
 
+    GameObject theGame = null;
+
     private void Start()
     {
+        theGame = GameObject.Find("TheGame");
+
         theAudioSource = GetComponent<AudioSource>();
 
         curHP = maxHP;
@@ -36,6 +40,9 @@ public class BaseStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        //shake screen
+        StartCoroutine(Shake());
+
         //if we're not defending, take full damage
         if (!defending)
         {
@@ -104,5 +111,119 @@ public class BaseStats : MonoBehaviour
         {
             return false;
         }
+    }
+
+    IEnumerator Shake()
+    {
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y, theGame.transform.position.z);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x + 0.05f, theGame.transform.position.y + 0.05f, theGame.transform.position.z + 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+        theGame.transform.position = new Vector3(theGame.transform.position.x - 0.1f, theGame.transform.position.y - 0.05f, theGame.transform.position.z - 0.05f);
+        yield return new WaitForSeconds(0.05f);
+
+
+
     }
 }
