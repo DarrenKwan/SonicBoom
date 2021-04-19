@@ -32,10 +32,14 @@ public class PlayersChampion : MonoBehaviour
     //reference to enemy - how we affect the enemy
     [SerializeField] GameObject BigusOrcus_TheFoul;
 
+    AudioSource theAudioSource;
+    [SerializeField] AudioClip attackSound, defendSound, chokeSound;
+
     void Start()
     {
         myBaseStats = GetComponent<BaseStats>();
 
+        theAudioSource = GetComponent<AudioSource>();
 
         //our percentage chances
         AttackChance = 33;
@@ -68,6 +72,9 @@ public class PlayersChampion : MonoBehaviour
 
     void ChooseAction()
     {
+        //reset our defense stance
+        myBaseStats.defending = false;
+
         //reset our tuples so we can get our actual rates
         ResetOurTuples();
 
@@ -172,6 +179,8 @@ public class PlayersChampion : MonoBehaviour
 
         //play animation
 
+        //play sound
+        theAudioSource.PlayOneShot(attackSound);
 
         ResetChances();
     }
@@ -179,6 +188,11 @@ public class PlayersChampion : MonoBehaviour
     void PlayerDefend()
     {
         Debug.Log("the player defends");
+
+        myBaseStats.defending = true;
+
+        //play sound
+        theAudioSource.PlayOneShot(defendSound);
 
         //play a defend animation
 
@@ -188,6 +202,9 @@ public class PlayersChampion : MonoBehaviour
     void PlayerChoke()
     {
         Debug.Log("the player chokes - what a bich");
+
+        //play sound
+        theAudioSource.PlayOneShot(chokeSound);
 
         //do nothing
 

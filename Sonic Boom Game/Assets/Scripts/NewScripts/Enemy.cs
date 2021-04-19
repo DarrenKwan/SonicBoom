@@ -21,10 +21,14 @@ public class Enemy : MonoBehaviour
     //player reference
     [SerializeField] GameObject player;
 
+    AudioSource theAudioSource;
+    [SerializeField] AudioClip attackSound, defendSound, chokeSound;
+
     void Start()
     {
         myBaseStats = GetComponent<BaseStats>();
 
+        theAudioSource = GetComponent<AudioSource>();
 
         //our percentage chances
         AttackChance = 42.5f;
@@ -61,7 +65,10 @@ public class Enemy : MonoBehaviour
 
     void ChooseAction()
     {
-        Debug.Log("enemy takes an action now");
+        //reset our defense stance
+        myBaseStats.defending = false;
+
+        //Debug.Log("enemy takes an action now");
 
         float chance = UnityEngine.Random.Range(0f, 100f);
         //specifying unityengine here cus we're also using system --> for the Tuples
@@ -88,16 +95,25 @@ public class Enemy : MonoBehaviour
     {
         //Debug.Log("enemy attacks");
 
+        //play sound
+        theAudioSource.PlayOneShot(attackSound);
+
         player.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
     }
 
     void EnemyDefend()
     {
         //Debug.Log("enemy defends");
+
+        //play sound
+        theAudioSource.PlayOneShot(defendSound);
     }
 
     void EnemyChoke()
     {
         //Debug.Log("enemy choked & skipped his turn");
+
+        //play sound
+        theAudioSource.PlayOneShot(chokeSound);
     }
 }

@@ -15,6 +15,8 @@ public class BaseStats : MonoBehaviour
     public float defense = 0;
     public float speed = 0;
 
+    public bool defending = false;
+
     private void Start()
     {
         curHP = maxHP;
@@ -29,7 +31,40 @@ public class BaseStats : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        curHP -= damage;
+        //if we're not defending, take full damage
+        if (!defending)
+        {
+            curHP -= damage;
+        }
+
+
+        //else, if we're defending, then check if your defense is successful
+        else if (defending)
+        {
+            //if your defense is successful, take 0 damage
+            if (CheckSuccessfulDefend())
+            {
+                curHP -= 0;
+
+                defending = false;
+
+                //play block sound
+
+
+            }
+            else
+            {
+                //if your defense isn't successful, take half damage - still better than nothing, eh?
+                curHP -= damage / 2;
+
+                defending = false;
+
+                //play block sound
+                //play taunt sound
+            }
+        }
+
+
 
         if(curHP <= 0)
         {
@@ -43,5 +78,19 @@ public class BaseStats : MonoBehaviour
         Debug.Log(this.gameObject.name + (" died... a tragedy, really."));
         //play some animation?
         //win the game?
+    }
+
+    bool CheckSuccessfulDefend()
+    {
+        float defenseRoll = Random.Range(0f, 100f);
+
+        if(defenseRoll >= 25)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
