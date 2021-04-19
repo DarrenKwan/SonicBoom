@@ -33,8 +33,8 @@ public class Enemy : MonoBehaviour
         theAudioSource = GetComponent<AudioSource>();
 
         //our percentage chances
-        AttackChance = 42.5f;
-        DefenseChance = 42.5f;
+        AttackChance = 60f;
+        DefenseChance = 25f;
         ChokeChance = 15f;
 
         possibleChance.Add(new Tuple<float, Action>(AttackChance, EnemyAttack));
