@@ -86,18 +86,18 @@ public class Enemy : MonoBehaviour
 
     void EnemyAttack()
     {
-        Debug.Log("enemy attacks");
+        //Debug.Log("enemy attacks");
 
         player.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
     }
 
     void EnemyDefend()
     {
-        Debug.Log("enemy defends");
+        //Debug.Log("enemy defends");
     }
 
     void EnemyChoke()
     {
-        Debug.Log("enemy choked & skipped his turn");
+        //Debug.Log("enemy choked & skipped his turn");
     }
 }

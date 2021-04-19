@@ -42,12 +42,7 @@ public class PlayersChampion : MonoBehaviour
         DefenseChance = 33;
         ChokeChance = 34;
 
-        possibleChance.Add(new Tuple<float, Action>(AttackChance, PlayerAttack));
-            //wat we're doing up there is binding the attack chance to our attack function
-                //can call this function using our attack chance
-
-        possibleChance.Add(new Tuple<float, Action>(DefenseChance, PlayerDefend));
-        possibleChance.Add(new Tuple<float, Action>(ChokeChance, PlayerChoke));
+        ResetOurTuples();
 
         //filling meter
         moraleImage.fillAmount = curMorale / maxMorale;
@@ -73,10 +68,8 @@ public class PlayersChampion : MonoBehaviour
 
     void ChooseAction()
     {
-            //Debug.Log("player takes an action now");
-
-        //get the highest chance for a thing
-        //here
+        //reset our tuples so we can get our actual rates
+        ResetOurTuples();
 
         float chance = UnityEngine.Random.Range(0f, 100f);
         //specifying unityengine here cus we're also using system --> for the Tuples
@@ -85,6 +78,7 @@ public class PlayersChampion : MonoBehaviour
 
         for (int i = 0; i < possibleChance.Count; i++)
         {
+
             sumChance += possibleChance[i].Item1;
             //item 1 is the chance percentage
 
@@ -205,6 +199,18 @@ public class PlayersChampion : MonoBehaviour
         AttackChance = 34f;
         DefenseChance = 34f;
         ChokeChance = 34f;
+    }
+
+    void ResetOurTuples()
+    {
+        possibleChance.Clear();
+
+        possibleChance.Add(new Tuple<float, Action>(AttackChance, PlayerAttack));
+        //wat we're doing up there is binding the attack chance to our attack function
+        //can call this function using our attack chance
+
+        possibleChance.Add(new Tuple<float, Action>(DefenseChance, PlayerDefend));
+        possibleChance.Add(new Tuple<float, Action>(ChokeChance, PlayerChoke));
     }
 
     #endregion

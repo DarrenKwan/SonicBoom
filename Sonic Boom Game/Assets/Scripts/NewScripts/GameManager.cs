@@ -87,7 +87,7 @@ namespace Leap.Unity.Interaction
 
             //increase attack chance
 
-            Debug.Log("Encourage attack ++");
+                //Debug.Log("Encourage attack ++");
             player.EncourageAttack();
 
             //spawn a particle flying towards ur orc
@@ -101,7 +101,7 @@ namespace Leap.Unity.Interaction
 
             //increase def chance
 
-            Debug.Log("Encourage def ++");
+                //Debug.Log("Encourage def ++");
             player.EncourageDefend();
 
             //spawn a particle flying towards ur orc
@@ -115,7 +115,7 @@ namespace Leap.Unity.Interaction
 
             //increase morale recharge rate
 
-            Debug.Log("Encourage morale ++");
+                //Debug.Log("Encourage morale ++");
             player.EncourageMorale();
 
             //spawn a particle flying towards ur orc
@@ -240,7 +240,7 @@ namespace Leap.Unity.Interaction
             //Instantiate(bul_R);
             //bul_R.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
-            Debug.Log("Fire from your right hand.");
+                //Debug.Log("Fire from your right hand.");
             yield return new WaitForSeconds(firingCooldown);
             canFire_R = true;
         }
@@ -254,7 +254,7 @@ namespace Leap.Unity.Interaction
             //Instantiate(bul_L);
             //bul_L.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
-            Debug.Log("Fire from your left hand.");
+                //Debug.Log("Fire from your left hand.");
             yield return new WaitForSeconds(firingCooldown);
             canFire_L = true;
         }
@@ -269,7 +269,7 @@ namespace Leap.Unity.Interaction
                 //Instantiate(bul_L);
                 //bul_C.GetComponent<Rigidbody>().AddForce(0, 0, 1f, ForceMode.Impulse);
 
-                Debug.Log("Fire top center pos.");
+                    //Debug.Log("Fire top center pos.");
                 yield return new WaitForSeconds(firingCooldown);
                 canFire_C = true;
             }
