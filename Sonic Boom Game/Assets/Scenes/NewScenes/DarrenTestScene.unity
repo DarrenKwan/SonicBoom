@@ -9746,10 +9746,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502d197e9debeb49926dd2effd81247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whoamI: 0
   maxHP: 100
   curHP: 100
   healthBarImage: {fileID: 1029022142}
-  attack: 10
+  attack: 15
   defense: 0
   speed: 0
   defending: 0
@@ -13236,10 +13237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9502d197e9debeb49926dd2effd81247, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whoamI: 1
   maxHP: 100
   curHP: 100
   healthBarImage: {fileID: 1880053566}
-  attack: 10
+  attack: 15
   defense: 0
   speed: 0
   defending: 0
@@ -19711,7 +19713,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1105089923}
-  - {fileID: 1143273010}
   m_Father: {fileID: 1788937323}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36741,16 +36742,16 @@ RectTransform:
   m_GameObject: {fileID: 1143273009}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.12054968, y: 0.32428294, z: 0.32428294}
+  m_LocalScale: {x: 0.12054967, y: 0.3242829, z: 0.3242829}
   m_Children:
   - {fileID: 327087668}
-  m_Father: {fileID: 697058279}
-  m_RootOrder: 1
+  m_Father: {fileID: 1999663090}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 312, y: 277.3}
-  m_SizeDelta: {x: 657.4595, y: 25.739243}
+  m_AnchoredPosition: {x: 319.03003, y: 78.01996}
+  m_SizeDelta: {x: 671.5267, y: 34.801712}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1143273011
 MonoBehaviour:
@@ -56738,6 +56739,7 @@ RectTransform:
   - {fileID: 1606911221}
   - {fileID: 1498640556}
   - {fileID: 407911096}
+  - {fileID: 1143273010}
   m_Father: {fileID: 1788937323}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

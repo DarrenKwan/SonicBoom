@@ -2,9 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BaseStats : MonoBehaviour
 {
+    public enum WhoAmI
+    {
+        ORCUS,
+        ENEMY
+    }
+    public WhoAmI whoamI;
+
     [Header("HP")]
     public float maxHP = 100f;
     public float curHP;
@@ -21,6 +29,9 @@ public class BaseStats : MonoBehaviour
     [SerializeField] AudioClip hurtSound, tauntSound;
 
     GameObject theGame = null;
+
+    //[SerializeField] GameObject myDeadBody = null;
+    //[SerializeField] GameObject myLivingBody = null;
 
     private void Start()
     {
@@ -97,6 +108,12 @@ public class BaseStats : MonoBehaviour
         Debug.Log(this.gameObject.name + (" died... a tragedy, really."));
         //play some animation?
         //win the game?
+
+        //myDeadBody.SetActive(true);
+
+        //myLivingBody.SetActive(false);
+
+        StartCoroutine(EndTheGame());
     }
 
     bool CheckSuccessfulDefend()
@@ -225,5 +242,21 @@ public class BaseStats : MonoBehaviour
 
 
 
+    }
+
+    IEnumerator EndTheGame()
+    {
+        switch (whoamI)
+        {
+            case WhoAmI.ORCUS:
+                yield return new WaitForSeconds(1);
+                SceneManager.LoadScene("DeathScene_Player");
+                break;
+
+            case WhoAmI.ENEMY:
+                yield return new WaitForSeconds(1);
+                SceneManager.LoadScene("DeathScene_Enemy");
+                break;
+        }
     }
 }

@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NewScenes/DarrenTestScene.unity
     guid: 76875820306a7a143abafd2fd35a0cc7
+  - enabled: 1
+    path: Assets/Scenes/NewScenes/DeathScene_Enemy.unity
+    guid: e74a54e5722d7834e82608f14b27cc79
+  - enabled: 1
+    path: Assets/Scenes/NewScenes/DeathScene_Player.unity
+    guid: 71057b759a5366f428e39caf4cc60c74
   m_configObjects: {}

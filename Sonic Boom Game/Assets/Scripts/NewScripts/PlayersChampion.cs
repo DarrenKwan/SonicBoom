@@ -202,7 +202,6 @@ public class PlayersChampion : MonoBehaviour
         //need a reference to enemy & their HP bar
         BigusOrcus_TheFoul.GetComponent<BaseStats>().TakeDamage(myBaseStats.attack);
         BigusOrcus_TheFoul.GetComponentInChildren<Animator>().SetTrigger("Damage");
-        //play animation
 
         //play sound
         theAudioSource.PlayOneShot(attackSound);
